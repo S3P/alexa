@@ -1,0 +1,14 @@
+﻿GetHoroscope what is the horoscope for {Sign}
+GetHoroscope what will the horoscope for {Sign} be on {Date}
+GetHoroscope get me my horoscope
+GetHoroscope {Sign}
+
+HelloWorldIntent say hello world
+HelloWorldIntent say hi
+HelloWorldIntent say hello
+HelloWorldIntent hello
+HelloWorldIntent hi
+HelloWorldIntent give me my sales for last year
+
+AMAZON.HelpIntent help
+AMAZON.HelpIntent i need help
