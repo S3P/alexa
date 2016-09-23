@@ -1,28 +1,23 @@
-﻿GetHoroscope what is the horoscope for {Sign}
-GetHoroscope what will the horoscope for {Sign} be on {Date}
-GetHoroscope get me my horoscope
-GetHoroscope {Sign}
+﻿Math multiply {NumberA} by {NumberB}
+Math whats {NumberA} by {NumberB}
 
-HelloWorldIntent say hello world
-HelloWorldIntent say hi
-HelloWorldIntent say hello
-HelloWorldIntent hello
-HelloWorldIntent hi
-HelloWorldIntent give me my sales for last year
-
-AMAZON.HelpIntent help
-AMAZON.HelpIntent i need help
-
-Alexa Good morning,
-
-Launch exact!
-
-ThanksIntent OK Thanks.
-
-WhathappenedIntent What happended in my webshop last night?
+WhathappenedIntent What happended in my webshop last night 
+WhathappenedIntent What happended last night 
+WhathappenedIntent What's the latest
+WhathappenedIntent Any updates
 
 OptionIntent what are my options
+OptionIntent what should i do 
+OptionIntent any suggestions 
+OptionIntent can you help me decide 
 
-EffectonBusinessIntent OK, what effet these options have on my business?
+EffectonBusinessIntent OK what effects do these options have on my business 
+EffectonBusinessIntent How will these affect me 
+EffectonBusinessIntent which option is better 
+EffectonBusinessIntent whats the impact 
 
-DeliveryIntent Let's get them delivered by tomorrow!
+DeliveryIntent Let's get them delivered by tomorrow
+DeliveryIntent Deliver them tomorrow
+DeliveryIntent Send them tomorrow
+
+ThanksIntent OK Thanks.
