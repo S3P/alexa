@@ -40,7 +40,7 @@ namespace Alexa2016.Controllers
 		private dynamic GetLaunchResponse(dynamic request)
 		{
 			LaunchRequest requestObj = Newtonsoft.Json.JsonConvert.DeserializeObject<LaunchRequest>(request.ToString());
-			return GetSSMLResponseObject("Hi, Thanks for choosing Exact Online Assistant!", false);
+			return GetSSMLResponseObject("Hi, Thanks for choosing Exact Online Assistant! How may I help you?", false);
 		}
 
 		private dynamic GetIntentResponse(dynamic request)
@@ -50,7 +50,7 @@ namespace Alexa2016.Controllers
 			{
 				case "WhathappenedIntent":
 					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
-				case "AvaialableStockIntent":
+				case "AvailableStockIntent":
 					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
 				case "ScoreIntent":
 					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
@@ -82,8 +82,8 @@ namespace Alexa2016.Controllers
 					builder = new SSMLBuilder(text);
 					text = builder.AddParagraph().ToString();
 					return text;
-				case "AvaialableStockIntent":
-					builder = new SSMLBuilder("There is insufficient stock to deliver 5 of them. Do you want to delay delivery or request an urgent delivery?");
+				case "AvailableStockIntent":
+					builder = new SSMLBuilder("No, there is insufficient stock to deliver 5 of them. Do you want to delay delivery or place a rush order at one of your suppliers?");
 					text = builder.AddParagraph().ToString();
 					return text;
 				case "ScoreIntent":
@@ -91,7 +91,7 @@ namespace Alexa2016.Controllers
 					text = builder.AddParagraph().ToString();
 					return text;
 				case "QuickerDeliveryIntent":
-					builder = new SSMLBuilder("Supplier BBC can deliver the missing items today, before noon.");
+					builder = new SSMLBuilder("Supplier BCC can deliver the items today, before noon.");
 					text = builder.AddParagraph().ToString();
 					return text;
 				case "DeliveryIntent":
