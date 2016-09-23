@@ -24,7 +24,7 @@ namespace Alexa2016.SpeachAssets
 					break;
 				case SeriveBusMessageType.ShowPopUp:
 					message.Properties.Add("data", "popup");
-					message.Properties.Add("data", customData);
+					message.Properties.Add("customdata", customData);
 					break;
 				default:
 					break;
