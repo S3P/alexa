@@ -6,11 +6,11 @@ WhathappenedIntent What happended last night
 WhathappenedIntent What's the latest
 WhathappenedIntent Any updates
 
-AvaialableStockIntent Is there enough stock available to deliver those orders
-AvaialableStockIntent do i have enough stock for them
-AvaialableStockIntent can i deliver all those orders
-AvaialableStockIntent can i deliver these orders
-AvaialableStockIntent can we deliver
+AvailableStockIntent Is there enough stock available to deliver those orders
+AvailableStockIntent do i have enough stock for them
+AvailableStockIntent can i deliver all those orders
+AvailableStockIntent can i deliver these orders
+AvailableStockIntent can we deliver
 
 ScoreIntent Before I can decide how is my customer satisfaction rate 
 ScoreIntent Before I can decide are my customers happy 
