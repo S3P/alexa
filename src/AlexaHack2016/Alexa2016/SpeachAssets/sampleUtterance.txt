@@ -12,9 +12,9 @@ AvaialableStockIntent can i deliver all those orders
 AvaialableStockIntent can i deliver these orders
 AvaialableStockIntent can we deliver
 
-ScoreIntent How is my customer satisfaction score 
-ScoreIntent are my customers happy 
-ScoreIntent how are my ratings
+ScoreIntent Before I can decide how is my customer satisfaction rate 
+ScoreIntent Before I can decide are my customers happy 
+ScoreIntent Before I can decide how are my ratings
 
 QuickerDeliveryIntent Is there an alternative to deliver faster
 QuickerDeliveryIntent can we deliver faster
