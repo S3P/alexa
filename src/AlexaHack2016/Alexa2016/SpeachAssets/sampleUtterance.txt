@@ -25,6 +25,9 @@ PurchaseIntent Please place the rush order at BCC for today
 PurchaseIntent Please place the order at BCC 
 PurchaseIntent Please place the order at BCC for today
 
+CustomerUpdateIntent What do i need to know about customer Baker Electronics
+CustomerUpdateIntent I'm visiting customer Baker Electronics, what do i need to know
+
 ThanksIntent OK Thanks.
 ThanksIntent Thanks.
 ThanksIntent Thank you.

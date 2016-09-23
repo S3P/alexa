@@ -46,20 +46,23 @@ namespace Alexa2016.Controllers
 		private dynamic GetIntentResponse(dynamic request)
 		{
 			Rootobject requestObj = Newtonsoft.Json.JsonConvert.DeserializeObject<Rootobject>(request.ToString());
-			switch (requestObj.request.intent.name)
+			string stuff = requestObj.request.intent.name;
+			switch (stuff)
 			{
 				case "WhathappenedIntent":
-					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "AvailableStockIntent":
-					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "ScoreIntent":
-					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "QuickerDeliveryIntent":
-					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "DeliveryIntent":
-					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+					return GetResponseObject(GetResponseString(stuff), false);
 				case "ThanksIntent":
-					return GetResponseObject(GetResponseString(requestObj.request.intent.name));
+					return GetResponseObject(GetResponseString(stuff));
+				case "CustomerUpdateIntent":
+					return GetResponseObject(GetResponseString(stuff), false);
 				case "Math":
 					return GetMatchResponse(request);
 				default:
@@ -100,6 +103,10 @@ namespace Alexa2016.Controllers
 					return text;
 				case "ThanksIntent":
 					builder = new SSMLBuilder("By the way don't forget Today is Carina's birthday.");
+					text = builder.AddParagraph().ToString();
+					return text;
+				case "CustomerUpdateIntent":
+					builder = new SSMLBuilder("They've moved office, their new address is Marketplace 10 in Amsterdam. Recently, they returned several items, because they were damaged. Mrs Baker expressed her concern about this and wants to discuss this. They owe you 30,000 Euro, of which 1500 Euro is late");
 					text = builder.AddParagraph().ToString();
 					return text;
 				default:
