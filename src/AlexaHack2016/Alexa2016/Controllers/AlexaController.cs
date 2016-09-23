@@ -40,28 +40,29 @@ namespace Alexa2016.Controllers
 		private dynamic GetLaunchResponse(dynamic request)
 		{
 			LaunchRequest requestObj = Newtonsoft.Json.JsonConvert.DeserializeObject<LaunchRequest>(request.ToString());
-			ServicebusHandler sbh = new SpeachAssets.ServicebusHandler();
-			sbh.SignalEOL(null);
 			return GetSSMLResponseObject("Hi, Thanks for choosing Exact Online Assistant! How may I help you?", false);
 		}
 
 		private dynamic GetIntentResponse(dynamic request)
 		{
 			Rootobject requestObj = Newtonsoft.Json.JsonConvert.DeserializeObject<Rootobject>(request.ToString());
-			switch (requestObj.request.intent.name)
+			string stuff = requestObj.request.intent.name;
+			switch (stuff)
 			{
 				case "WhathappenedIntent":
-					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "AvailableStockIntent":
-					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "ScoreIntent":
-					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "QuickerDeliveryIntent":
-					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
-				case "PurchaseIntent":
-					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
+				case "DeliveryIntent":
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "ThanksIntent":
-					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name));
+					return GetSSMLResponseObject(GetResponseString(stuff));
+				case "CustomerUpdateIntent":
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "Math":
 					return GetMathResponse(request);
 				default:
@@ -79,7 +80,7 @@ namespace Alexa2016.Controllers
 				case "WhathappenedIntent":
 					builder = new SSMLBuilder("It was a good evening.");
 					text = builder.AddParagraph().ToString();
-					builder = new SSMLBuilder("40 orders arrived, for a total amount of 1900 Euros.");
+					builder = new SSMLBuilder("40 orders arrived, for a total amount of 1900 Euro.");
 					text = text + builder.AddParagraph().ToString();
 					builder = new SSMLBuilder(text);
 					text = builder.AddParagraph().ToString();
@@ -96,12 +97,16 @@ namespace Alexa2016.Controllers
 					builder = new SSMLBuilder("Supplier BCC can deliver the items today, before noon.");
 					text = builder.AddParagraph().ToString();
 					return text;
-				case "PurchaseIntent":
-					builder = new SSMLBuilder("OK, purchase order to BCC was sent. Expected delivery is at noon today.");
+				case "DeliveryIntent":
+					builder = new SSMLBuilder("OK, purchase order to BCC was sent. Expected delivery is at noon today");
 					text = builder.AddParagraph().ToString();
 					return text;
 				case "ThanksIntent":
 					builder = new SSMLBuilder("By the way don't forget Today is Carina's birthday.");
+					text = builder.AddParagraph().ToString();
+					return text;
+				case "CustomerUpdateIntent":
+					builder = new SSMLBuilder("They've moved office, their new address is Marketplace 10 in Amsterdam. Recently, they returned several items, because they were damaged. Mrs Baker expressed her concern about this and wants to discuss this. They owe you 30,000 Euro, of which 1500 Euro is late");
 					text = builder.AddParagraph().ToString();
 					return text;
 				default:
