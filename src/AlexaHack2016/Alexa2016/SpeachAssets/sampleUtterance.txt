@@ -6,6 +6,14 @@ WhathappenedIntent What happended last night
 WhathappenedIntent What's the latest
 WhathappenedIntent Any updates
 
+Alexa Good morning,
+
+Launch exact!
+
+WhathappenedIntent What happended in my webshop last night?
+
+ThanksIntent OK Thanks.
+
 OptionIntent what are my options
 OptionIntent what should i do 
 OptionIntent any suggestions 

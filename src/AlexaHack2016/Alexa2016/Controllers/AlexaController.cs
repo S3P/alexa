@@ -26,8 +26,7 @@ namespace Alexa2016.Controllers
 					case "SessionEndedRequest":
 						return null;
 					default:
-						return GetResponseObject("You drive me mad, What are you talking about?",false);
-
+						return GetResponseObject("You drive me mad, What are you talking about?", false);
 				}
 			}
 			catch (Exception ex)
@@ -41,7 +40,7 @@ namespace Alexa2016.Controllers
 		private dynamic GetLaunchResponse(dynamic request)
 		{
 			LaunchRequest requestObj = Newtonsoft.Json.JsonConvert.DeserializeObject<LaunchRequest>(request.ToString());
-			return GetResponseObject("Hi, Thanks for choosing Exact Online Assistant!", false);
+			return GetSSMLResponseObject("Hi, Thanks for choosing Exact Online Assistant!", false);
 		}
 
 		private dynamic GetIntentResponse(dynamic request)
@@ -49,10 +48,16 @@ namespace Alexa2016.Controllers
 			Rootobject requestObj = Newtonsoft.Json.JsonConvert.DeserializeObject<Rootobject>(request.ToString());
 			switch (requestObj.request.intent.name)
 			{
-				case "HelloWorldIntent":
-					return GetResponseObject("Well done! It is now time to sleep!", false);
-				case "GetHoroscope":
-					return GetResponseObject("World is bigger than what you think", false);
+				case "WhathappenedIntent":
+					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
+				case "OptionIntent":
+					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+				case "EffectonBusinessIntent":
+					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+				case "DeliveryIntent":
+					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+				case "ThanksIntent":
+					return GetResponseObject(GetResponseString(requestObj.request.intent.name));
 				case "Math":
 					return GetMatchResponse(request);
 				default:
@@ -93,5 +98,67 @@ namespace Alexa2016.Controllers
 				}
 			};
 		}
+
+		private dynamic GetSSMLResponseObject(string text, bool ender = false)
+		{
+			SSMLBuilder builder = new SpeachAssets.SSMLBuilder(text);
+			builder.AddSpeak();
+			builder.AddParagraph();
+			string speachText = builder.ToString();
+			return new
+			{
+				version = "0.1",
+				sessionAttributes = new { },
+				response = new
+				{
+					outputSpeech = new
+					{
+						type = "SSML",
+						ssml = speachText
+					},
+					card = new
+					{
+						type = "Simple",
+						title = "Our Title",
+						content = "Hello\nHere is S3P",
+					},
+
+					shouldEndSession = ender
+				}
+			};
+		}
+
+		private string GetResponseString(string intentString)
+		{
+			string text = "";
+			SSMLBuilder builder = null;
+
+			switch (intentString)
+			{
+				case "WhathappenedIntent":
+					builder = new SSMLBuilder("It was a good evening.");
+					text = builder.AddParagraph().ToString();
+					builder = new SSMLBuilder("950 Euro were credited to your bank account.");
+					text = text + builder.AddParagraph().ToString();
+					builder = new SSMLBuilder("40 orders arrived, for a total amount of 1959 Euro.");
+					text = text + builder.AddParagraph().ToString();
+					builder = new SSMLBuilder(text);
+					text = builder.AddParagraph().ToString();
+					return text;
+				case "OptionIntent":
+					return "35 of these sales orders can be delivered from stock. For the other 5 stock is insufficient." +
+						"You can choose to deliver those next week when new supply has arrived. Or you can ask supplier BBC to delvier the missing otiems before noon."; ;
+				case "EffectonBusinessIntent":
+					return "Delivering later will lower customer satisfaction. Your current score on eBay is 93%, while you want to achieev 95%. Ordering at BBC will imact the margin on those orders. Overall, the margin for this month would drop from 24% to 22%. Your target is 20%.";
+				case "DeliveryIntent":
+					return "OK, purchase order to BCC was sent. Expected delivery is at noon today. DHL already confirmed the pickup today to be at 15.00 Combined with the higher quantity, I've notified Carlos to stat packing at 13.00.";
+				case "ThanksIntent":
+					return "By the way don't forget Today is Carina's birthday.";
+				default:
+					return "";
+			}
+		}
+
+		
 	}
 }

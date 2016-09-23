@@ -252,6 +252,7 @@
     <Compile Include="SpeachAssets\Math.cs" />
     <Compile Include="SpeachAssets\POCOs.cs" />
     <Compile Include="SpeachAssets\ServicebusHandler.cs" />
+    <Compile Include="SpeachAssets\SSMLBuilder.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
