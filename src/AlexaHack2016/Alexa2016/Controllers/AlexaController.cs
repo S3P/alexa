@@ -49,10 +49,16 @@ namespace Alexa2016.Controllers
 			Rootobject requestObj = Newtonsoft.Json.JsonConvert.DeserializeObject<Rootobject>(request.ToString());
 			switch (requestObj.request.intent.name)
 			{
-				case "HelloWorldIntent":
-					return GetResponseObject("Well done! It is now time to sleep!", false);
-				case "GetHoroscope":
-					return GetResponseObject("World is bigger than what you think", false);
+				case "WhathappenedIntent":
+					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+				case "OptionIntent":
+					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+				case "EffectonBusinessIntent":
+					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+				case "DeliveryIntent":
+					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+				case "ThanksIntent":
+					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
 				case "Math":
 					return GetMatchResponse(request);
 				default:
@@ -107,7 +113,7 @@ namespace Alexa2016.Controllers
 					return "Delivering later will lower customer satisfaction. Your current score on eBay is 93%, while you want to achieev 95%. Ordering at BBC will imact the margin on those orders. Overall, the margin for this month would drop from 24% to 22%. Your target is 20%.";
 				case "DeliveryIntent":
 					return "OK, purchase order to BCC was sent. Expected delivery is at noon today. DHL already confirmed the pickup today to be at 15.00 Combined with the higher quantity, I've notified Carlos to stat packing at 13.00.";
-				case "Thanks":
+				case "ThanksIntent":
 					return "By the way don't forget Today is Carina's birthday.";
 				default:
 					return "";
