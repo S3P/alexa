@@ -6,15 +6,13 @@ WhathappenedIntent What happended last night
 WhathappenedIntent What's the latest
 WhathappenedIntent Any updates
 
-OptionIntent what are my options
-OptionIntent what should i do 
-OptionIntent any suggestions 
-OptionIntent can you help me decide 
+AvaialableStockIntent Is the stock available enough to deliver those orders
 
-EffectonBusinessIntent OK what effects do these options have on my business 
-EffectonBusinessIntent How will these affect me 
-EffectonBusinessIntent which option is better 
-EffectonBusinessIntent whats the impact 
+ScoreIntent How is my score on customer satisfaction doing
+
+AlternativeIntent Is there an alternative to deliver faster
+
+ImpactIntent How would this option impact my margins?
 
 DeliveryIntent Let's get them delivered by tomorrow
 DeliveryIntent Deliver them tomorrow
