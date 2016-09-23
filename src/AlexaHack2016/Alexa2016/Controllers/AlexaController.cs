@@ -50,28 +50,70 @@ namespace Alexa2016.Controllers
 			{
 				case "WhathappenedIntent":
 					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
-				case "OptionIntent":
-					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
-				case "EffectonBusinessIntent":
-					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+				case "AvaialableStockIntent":
+					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
+				case "ScoreIntent":
+					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
+				case "QuickerDeliveryIntent":
+					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
 				case "DeliveryIntent":
-					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
 				case "ThanksIntent":
-					return GetResponseObject(GetResponseString(requestObj.request.intent.name));
+					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name));
 				case "Math":
-					return GetMatchResponse(request);
+					return GetMathResponse(request);
 				default:
 					return GetResponseObject("Should I answer that?", false);
 			}
 		}
 
-		private dynamic GetMatchResponse(dynamic request)
+		private string GetResponseString(string intentString)
+		{
+			string text = "";
+			SSMLBuilder builder = null;
+
+			switch (intentString)
+			{
+				case "WhathappenedIntent":
+					builder = new SSMLBuilder("It was a good evening.");
+					text = builder.AddParagraph().ToString();
+					builder = new SSMLBuilder("40 orders arrived, for a total amount of 1900 Euro.");
+					text = text + builder.AddParagraph().ToString();
+					builder = new SSMLBuilder(text);
+					text = builder.AddParagraph().ToString();
+					return text;
+				case "AvaialableStockIntent":
+					builder = new SSMLBuilder("There is insufficient stock to deliver 5 of them. Do you want to delay delivery or request an urgent delivery?");
+					text = builder.AddParagraph().ToString();
+					return text;
+				case "ScoreIntent":
+					builder = new SSMLBuilder("Your current score on eBay is 83%, and your target is 90%.");
+					text = builder.AddParagraph().ToString();
+					return text;
+				case "QuickerDeliveryIntent":
+					builder = new SSMLBuilder("Supplier BBC can deliver the missing items today, before noon.");
+					text = builder.AddParagraph().ToString();
+					return text;
+				case "DeliveryIntent":
+					builder = new SSMLBuilder("OK, purchase order to BCC was sent. Expected delivery is at noon today");
+					text = builder.AddParagraph().ToString();
+					return text;
+				case "ThanksIntent":
+					builder = new SSMLBuilder("By the way don't forget Today is Carina's birthday.");
+					text = builder.AddParagraph().ToString();
+					return text;
+				default:
+					return "";
+			}
+		}
+
+		private dynamic GetMathResponse(dynamic request)
 		{
 			AlexaMathRequest requestObj = Newtonsoft.Json.JsonConvert.DeserializeObject<AlexaMathRequest>(request.ToString());
 			var a = int.Parse(requestObj.request.intent.slots.NumberA.value);
 			var b = int.Parse(requestObj.request.intent.slots.NumberB.value);
 
-			return GetResponseObject("The answer is: ... let me think, Maybe" + a * b, false);
+			return GetResponseObject("The answer is: ... let me think, Maybe around " + a * b, false);
 		}
 
 		private dynamic GetResponseObject(string text, bool ender = true)
@@ -103,7 +145,6 @@ namespace Alexa2016.Controllers
 		{
 			SSMLBuilder builder = new SpeachAssets.SSMLBuilder(text);
 			builder.AddSpeak();
-			builder.AddParagraph();
 			string speachText = builder.ToString();
 			return new
 			{
@@ -127,38 +168,5 @@ namespace Alexa2016.Controllers
 				}
 			};
 		}
-
-		private string GetResponseString(string intentString)
-		{
-			string text = "";
-			SSMLBuilder builder = null;
-
-			switch (intentString)
-			{
-				case "WhathappenedIntent":
-					builder = new SSMLBuilder("It was a good evening.");
-					text = builder.AddParagraph().ToString();
-					builder = new SSMLBuilder("950 Euro were credited to your bank account.");
-					text = text + builder.AddParagraph().ToString();
-					builder = new SSMLBuilder("40 orders arrived, for a total amount of 1959 Euro.");
-					text = text + builder.AddParagraph().ToString();
-					builder = new SSMLBuilder(text);
-					text = builder.AddParagraph().ToString();
-					return text;
-				case "OptionIntent":
-					return "35 of these sales orders can be delivered from stock. For the other 5 stock is insufficient." +
-						"You can choose to deliver those next week when new supply has arrived. Or you can ask supplier BBC to delvier the missing otiems before noon."; ;
-				case "EffectonBusinessIntent":
-					return "Delivering later will lower customer satisfaction. Your current score on eBay is 93%, while you want to achieev 95%. Ordering at BBC will imact the margin on those orders. Overall, the margin for this month would drop from 24% to 22%. Your target is 20%.";
-				case "DeliveryIntent":
-					return "OK, purchase order to BCC was sent. Expected delivery is at noon today. DHL already confirmed the pickup today to be at 15.00 Combined with the higher quantity, I've notified Carlos to stat packing at 13.00.";
-				case "ThanksIntent":
-					return "By the way don't forget Today is Carina's birthday.";
-				default:
-					return "";
-			}
-		}
-
-		
 	}
 }

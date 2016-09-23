@@ -10,9 +10,7 @@ AvaialableStockIntent Is the stock available enough to deliver those orders
 
 ScoreIntent How is my score on customer satisfaction doing
 
-AlternativeIntent Is there an alternative to deliver faster
-
-ImpactIntent How would this option impact my margins?
+QuickerDeliveryIntent Is there an alternative to deliver faster
 
 DeliveryIntent Let's get them delivered by tomorrow
 DeliveryIntent Deliver them tomorrow
