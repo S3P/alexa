@@ -2,12 +2,18 @@
 	"intents": [{
 		"intent": "WhathappenedIntent"
 	}, {
-		"intent": "OptionIntent"
+		"intent": "AvailableStockIntent"
 	}, {
-		"intent": "EffectonBusinessIntent"
+		"intent": "ScoreIntent"
 	}, {
-		"intent": "DeliveryIntent"
+		"intent": "PurchaseIntent"
 	}, {
+		"intent": "QuickerDeliveryIntent"
+	},{
+		"intent": "ShowCashflowIntent"
+	},{
+		"intent": "CustomerUpdateIntent"
+	},{
 		"intent": "Math",
 		"slots": [{
 			"name": "NumberA",
@@ -16,8 +22,8 @@
 			"name": "NumberB",
 			"type": "AMAZON.NUMBER"
 		}]
-    },{
-      "intent":"ThanksIntent"    
-    }]
+	}, {
+		"intent": "ThanksIntent"
+	}]
 
 }

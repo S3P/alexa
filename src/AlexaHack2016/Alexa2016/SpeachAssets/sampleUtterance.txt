@@ -25,6 +25,10 @@ PurchaseIntent Please place the rush order at BCC for today
 PurchaseIntent Please place the order at BCC 
 PurchaseIntent Please place the order at BCC for today
 
+ShowCashflowIntent Show my cashflow balance on screen
+ShowCashflowIntent Show my cashflow balance  
+ShowCashflowIntent Cashflow balance
+
 ThanksIntent OK Thanks.
 ThanksIntent Thanks.
 ThanksIntent Thank you.

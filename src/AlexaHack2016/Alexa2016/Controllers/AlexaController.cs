@@ -60,6 +60,8 @@ namespace Alexa2016.Controllers
 					return GetSSMLResponseObject(GetResponseString(stuff));
 				case "CustomerUpdateIntent":
 					return GetSSMLResponseObject(GetResponseString(stuff), false);
+				case "ShowCashflowIntent":
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "Math":
 					return GetMathResponse(request);
 				default:
@@ -104,6 +106,10 @@ namespace Alexa2016.Controllers
 					return text;
 				case "CustomerUpdateIntent":
 					builder = new SSMLBuilder("They've moved office, their new address is Marketplace 10 in Amsterdam. Recently, they returned several items, because they were damaged. Mrs Baker expressed her concern about this and wants to discuss this. They owe you 30,000 Euro, of which 1500 Euro is late");
+					text = builder.AddParagraph().ToString();
+					return text;
+				case "ShowCashflowIntent":
+					builder = new SSMLBuilder("OK, Done.");
 					text = builder.AddParagraph().ToString();
 					return text;
 				default:
