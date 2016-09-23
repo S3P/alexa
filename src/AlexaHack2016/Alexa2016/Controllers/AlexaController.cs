@@ -26,8 +26,7 @@ namespace Alexa2016.Controllers
 					case "SessionEndedRequest":
 						return null;
 					default:
-						return GetResponseObject("You drive me mad, What are you talking about?",false);
-
+						return GetResponseObject("You drive me mad, What are you talking about?", false);
 				}
 			}
 			catch (Exception ex)
@@ -41,7 +40,7 @@ namespace Alexa2016.Controllers
 		private dynamic GetLaunchResponse(dynamic request)
 		{
 			LaunchRequest requestObj = Newtonsoft.Json.JsonConvert.DeserializeObject<LaunchRequest>(request.ToString());
-			return GetResponseObject("Hi, Thanks for choosing Exact Online Assistant!", false);
+			return GetSSMLResponseObject("Hi, Thanks for choosing Exact Online Assistant!", false);
 		}
 
 		private dynamic GetIntentResponse(dynamic request)
@@ -50,7 +49,7 @@ namespace Alexa2016.Controllers
 			switch (requestObj.request.intent.name)
 			{
 				case "WhathappenedIntent":
-					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
 				case "OptionIntent":
 					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
 				case "EffectonBusinessIntent":
@@ -58,7 +57,7 @@ namespace Alexa2016.Controllers
 				case "DeliveryIntent":
 					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
 				case "ThanksIntent":
-					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+					return GetResponseObject(GetResponseString(requestObj.request.intent.name));
 				case "Math":
 					return GetMatchResponse(request);
 				default:
@@ -100,12 +99,52 @@ namespace Alexa2016.Controllers
 			};
 		}
 
+		private dynamic GetSSMLResponseObject(string text, bool ender = false)
+		{
+			SSMLBuilder builder = new SpeachAssets.SSMLBuilder(text);
+			builder.AddSpeak();
+			builder.AddParagraph();
+			string speachText = builder.ToString();
+			return new
+			{
+				version = "0.1",
+				sessionAttributes = new { },
+				response = new
+				{
+					outputSpeech = new
+					{
+						type = "SSML",
+						ssml = speachText
+					},
+					card = new
+					{
+						type = "Simple",
+						title = "Our Title",
+						content = "Hello\nHere is S3P",
+					},
+
+					shouldEndSession = ender
+				}
+			};
+		}
+
 		private string GetResponseString(string intentString)
 		{
+			string text = "";
+			SSMLBuilder builder = null;
+
 			switch (intentString)
 			{
 				case "WhathappenedIntent":
-					return "It was a good evening. 40 orders arrived, for a total anout of 1959 Euro. This morning, your bank has confirmed that all payments were received.";
+					builder = new SSMLBuilder("It was a good evening.");
+					text = builder.AddParagraph().ToString();
+					builder = new SSMLBuilder("950 Euro were credited to your bank account.");
+					text = text + builder.AddParagraph().ToString();
+					builder = new SSMLBuilder("40 orders arrived, for a total amount of 1959 Euro.");
+					text = text + builder.AddParagraph().ToString();
+					builder = new SSMLBuilder(text);
+					text = builder.AddParagraph().ToString();
+					return text;
 				case "OptionIntent":
 					return "35 of these sales orders can be delivered from stock. For the other 5 stock is insufficient." +
 						"You can choose to deliver those next week when new supply has arrived. Or you can ask supplier BBC to delvier the missing otiems before noon."; ;
@@ -119,5 +158,7 @@ namespace Alexa2016.Controllers
 					return "";
 			}
 		}
+
+		
 	}
 }
