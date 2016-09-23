@@ -40,6 +40,8 @@ namespace Alexa2016.Controllers
 		private dynamic GetLaunchResponse(dynamic request)
 		{
 			LaunchRequest requestObj = Newtonsoft.Json.JsonConvert.DeserializeObject<LaunchRequest>(request.ToString());
+			ServicebusHandler sbh = new SpeachAssets.ServicebusHandler();
+			sbh.SignalEOL(null);
 			return GetSSMLResponseObject("Hi, Thanks for choosing Exact Online Assistant! How may I help you?", false);
 		}
 
@@ -56,12 +58,12 @@ namespace Alexa2016.Controllers
 					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
 				case "QuickerDeliveryIntent":
 					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
-				case "DeliveryIntent":
-					return GetResponseObject(GetResponseString(requestObj.request.intent.name), false);
+				case "PurchaseIntent":
+					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name), false);
 				case "ThanksIntent":
-					return GetResponseObject(GetResponseString(requestObj.request.intent.name));
+					return GetSSMLResponseObject(GetResponseString(requestObj.request.intent.name));
 				case "Math":
-					return GetMatchResponse(request);
+					return GetMathResponse(request);
 				default:
 					return GetResponseObject("Should I answer that?", false);
 			}
@@ -77,7 +79,7 @@ namespace Alexa2016.Controllers
 				case "WhathappenedIntent":
 					builder = new SSMLBuilder("It was a good evening.");
 					text = builder.AddParagraph().ToString();
-					builder = new SSMLBuilder("40 orders arrived, for a total amount of 1900 Euro.");
+					builder = new SSMLBuilder("40 orders arrived, for a total amount of 1900 Euros.");
 					text = text + builder.AddParagraph().ToString();
 					builder = new SSMLBuilder(text);
 					text = builder.AddParagraph().ToString();
@@ -94,8 +96,8 @@ namespace Alexa2016.Controllers
 					builder = new SSMLBuilder("Supplier BCC can deliver the items today, before noon.");
 					text = builder.AddParagraph().ToString();
 					return text;
-				case "DeliveryIntent":
-					builder = new SSMLBuilder("OK, purchase order to BCC was sent. Expected delivery is at noon today");
+				case "PurchaseIntent":
+					builder = new SSMLBuilder("OK, purchase order to BCC was sent. Expected delivery is at noon today.");
 					text = builder.AddParagraph().ToString();
 					return text;
 				case "ThanksIntent":
@@ -170,36 +172,36 @@ namespace Alexa2016.Controllers
 			};
 		}
 
-		private string GetResponseString(string intentString)
-		{
-			string text = "";
-			SSMLBuilder builder = null;
+		//private string GetResponseString(string intentString)
+		//{
+		//	string text = "";
+		//	SSMLBuilder builder = null;
 
-			switch (intentString)
-			{
-				case "WhathappenedIntent":
-					builder = new SSMLBuilder("It was a good evening.");
-					text = builder.AddParagraph().ToString();
-					builder = new SSMLBuilder("950 Euro were credited to your bank account.");
-					text = text + builder.AddParagraph().ToString();
-					builder = new SSMLBuilder("40 orders arrived, for a total amount of 1959 Euro.");
-					text = text + builder.AddParagraph().ToString();
-					builder = new SSMLBuilder(text);
-					text = builder.AddParagraph().ToString();
-					return text;
-				case "OptionIntent":
-					return "35 of these sales orders can be delivered from stock. For the other 5 stock is insufficient." +
-						"You can choose to deliver those next week when new supply has arrived. Or you can ask supplier BBC to delvier the missing otiems before noon."; ;
-				case "EffectonBusinessIntent":
-					return "Delivering later will lower customer satisfaction. Your current score on eBay is 93%, while you want to achieev 95%. Ordering at BBC will imact the margin on those orders. Overall, the margin for this month would drop from 24% to 22%. Your target is 20%.";
-				case "DeliveryIntent":
-					return "OK, purchase order to BCC was sent. Expected delivery is at noon today. DHL already confirmed the pickup today to be at 15.00 Combined with the higher quantity, I've notified Carlos to stat packing at 13.00.";
-				case "ThanksIntent":
-					return "By the way don't forget Today is Carina's birthday.";
-				default:
-					return "";
-			}
-		}
+		//	switch (intentString)
+		//	{
+		//		case "WhathappenedIntent":
+		//			builder = new SSMLBuilder("It was a good evening.");
+		//			text = builder.AddParagraph().ToString();
+		//			builder = new SSMLBuilder("950 Euro were credited to your bank account.");
+		//			text = text + builder.AddParagraph().ToString();
+		//			builder = new SSMLBuilder("40 orders arrived, for a total amount of 1959 Euro.");
+		//			text = text + builder.AddParagraph().ToString();
+		//			builder = new SSMLBuilder(text);
+		//			text = builder.AddParagraph().ToString();
+		//			return text;
+		//		case "OptionIntent":
+		//			return "35 of these sales orders can be delivered from stock. For the other 5 stock is insufficient." +
+		//				"You can choose to deliver those next week when new supply has arrived. Or you can ask supplier BBC to delvier the missing otiems before noon."; ;
+		//		case "EffectonBusinessIntent":
+		//			return "Delivering later will lower customer satisfaction. Your current score on eBay is 93%, while you want to achieev 95%. Ordering at BBC will imact the margin on those orders. Overall, the margin for this month would drop from 24% to 22%. Your target is 20%.";
+		//		case "DeliveryIntent":
+		//			return "OK, purchase order to BCC was sent. Expected delivery is at noon today. DHL already confirmed the pickup today to be at 15.00 Combined with the higher quantity, I've notified Carlos to stat packing at 13.00.";
+		//		case "ThanksIntent":
+		//			return "By the way don't forget Today is Carina's birthday.";
+		//		default:
+		//			return "";
+		//	}
+		//}
 
 		
 	}
