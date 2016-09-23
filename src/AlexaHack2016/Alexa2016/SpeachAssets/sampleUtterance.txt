@@ -6,16 +6,27 @@ WhathappenedIntent What happended last night
 WhathappenedIntent What's the latest
 WhathappenedIntent Any updates
 
-AvaialableStockIntent Is the stock available enough to deliver those orders
+AvaialableStockIntent Is there enough stock available to deliver those orders
+AvaialableStockIntent do i have enough stock for them
+AvaialableStockIntent can i deliver all those orders
+AvaialableStockIntent can i deliver these orders
+AvaialableStockIntent can we deliver
 
-ScoreIntent How is my score on customer satisfaction doing
+ScoreIntent How is my customer satisfaction score 
+ScoreIntent are my customers happy 
+ScoreIntent how are my ratings
 
-AlternativeIntent Is there an alternative to deliver faster
-
-ImpactIntent How would this option impact my margins?
+QuickerDeliveryIntent Is there an alternative to deliver faster
+QuickerDeliveryIntent can we deliver faster
+QuickerDeliveryIntent when is the earliest i can restock
+QuickerDeliveryIntent when can i restock
 
 DeliveryIntent Let's get them delivered by tomorrow
 DeliveryIntent Deliver them tomorrow
 DeliveryIntent Send them tomorrow
 
 ThanksIntent OK Thanks.
+ThanksIntent Thanks.
+ThanksIntent Thank you.
+
+
