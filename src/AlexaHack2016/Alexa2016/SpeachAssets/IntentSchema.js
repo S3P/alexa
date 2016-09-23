@@ -1,20 +1,21 @@
 ﻿{
-	"intents": [
-	  {
-	  	"intent": "GetHoroscope",
-	  	"slots": [
-		  {
-		  	"name": "Sign",
-		  	"type": "LIST_OF_SIGNS"
-		  },
-		  {
-		  	"name": "Date",
-		  	"type": "AMAZON.DATE"
-		  }
-	  	]
-	  },
-	  {
-	  	"intent": "GetLuckyNumbers"
-	  }
-	]
+	"intents": [{
+		"intent": "WhathappenedIntent"
+	}, {
+		"intent": "OptionIntent"
+	}, {
+		"intent": "EffectonBusinessIntent"
+	}, {
+		"intent": "DeliveryIntent"
+	}, {
+		"intent": "Math",
+		"slots": [{
+			"name": "NumberA",
+			"type": "AMAZON.NUMBER"
+		}, {
+			"name": "NumberB",
+			"type": "AMAZON.NUMBER"
+		}]
+	}]
+
 }
