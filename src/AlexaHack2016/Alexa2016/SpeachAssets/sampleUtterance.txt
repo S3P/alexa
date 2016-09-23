@@ -15,7 +15,7 @@ AMAZON.HelpIntent i need help
 
 Alexa Good morning,
 
-Lunch exact!
+Launch exact!
 
 WhathappenedIntent What happended in my webshop last night?
 
