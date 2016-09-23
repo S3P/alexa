@@ -1,4 +1,5 @@
-﻿using Microsoft.ServiceBus.Messaging;
+﻿using Alexa2016.Controllers;
+using Microsoft.ServiceBus.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,22 @@ namespace Alexa2016.SpeachAssets
 		private string topicName = "incoming";//Azure channel
 		private string subscriptionName = "AllMessage";
 
-		public void SignalEOL(dynamic messageData)
+		public void SignalEOL(SeriveBusMessageType messageType, string customData)
 		{
 			var client = TopicClient.CreateFromConnectionString(_connectionString, topicName);
-			var message = new BrokeredMessage("This is a test message!");
+			var message = new BrokeredMessage("Enjoy");
+			switch (messageType)
+			{
+				case SeriveBusMessageType.CreatePurchaseOrder:
+					message.Properties.Add("data", "purchase");
+					break;
+				case SeriveBusMessageType.ShowPopUp:
+					message.Properties.Add("data", "popup");
+					message.Properties.Add("data", customData);
+					break;
+				default:
+					break;
+			}
 			client.Send(message);
 		}
 	}
