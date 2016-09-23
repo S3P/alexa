@@ -12,3 +12,15 @@ HelloWorldIntent give me my sales for last year
 
 AMAZON.HelpIntent help
 AMAZON.HelpIntent i need help
+
+Alexa Good morning,
+
+Lunch exact!
+
+WhathappenedIntent What happended in my webshop last night?
+
+OptionIntent what are my options
+
+EffectonBusinessIntent OK, what effet these options have on my business?
+
+DeliveryIntent Let's get them delivered by tomorrow!
