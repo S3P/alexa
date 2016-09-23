@@ -94,7 +94,7 @@ namespace Alexa2016.Controllers
 					builder = new SSMLBuilder("Supplier BCC can deliver the items today, before noon.");
 					text = builder.AddParagraph().ToString();
 					return text;
-				case "DeliveryIntent":
+				case "PurchaseIntent":
 					builder = new SSMLBuilder("OK, purchase order to BCC was sent. Expected delivery is at noon today");
 					text = builder.AddParagraph().ToString();
 					return text;
@@ -107,7 +107,7 @@ namespace Alexa2016.Controllers
 					text = builder.AddParagraph().ToString();
 					return text;
 				default:
-					return "";
+					return "The command is not correct please try again!";
 			}
 		}
 
