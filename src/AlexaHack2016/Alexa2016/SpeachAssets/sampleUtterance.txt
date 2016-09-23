@@ -3,14 +3,11 @@ Math whats {NumberA} by {NumberB}
 
 WhathappenedIntent What happended in my webshop last night 
 WhathappenedIntent What happended last night 
-WhathappenedIntent What's the latest
-WhathappenedIntent Any updates
 
 AvailableStockIntent Is there enough stock available to deliver those orders
 AvailableStockIntent do i have enough stock for them
 AvailableStockIntent can i deliver all those orders
 AvailableStockIntent can i deliver these orders
-AvailableStockIntent can we deliver
 
 ScoreIntent Before I can decide how is my customer satisfaction rate 
 ScoreIntent Before I can decide are my customers happy 
@@ -19,16 +16,18 @@ ScoreIntent Before I can decide how are my ratings
 QuickerDeliveryIntent Is there an alternative to deliver faster
 QuickerDeliveryIntent can we deliver faster
 QuickerDeliveryIntent when is the earliest i can restock
-QuickerDeliveryIntent when can i restock
 
 PurchaseIntent Please place the rush order at BCC for today
 PurchaseIntent Please place the order at BCC 
 PurchaseIntent Please place the order at BCC for today
 
 ShowCashflowIntent Show my cashflow balance on screen
-ShowCashflowIntent Show my cashflow balance  
-ShowCashflowIntent Cashflow balance
 
-ThanksIntent OK Thanks.
-ThanksIntent Thanks.
-ThanksIntent Thank you.
+ShowSalesTrendIntent Show the sales trend for iPhones this year
+
+SetReminderIntent Remind me to send more information about audio cables to Baker Electronics
+
+CustomerUpdateIntent I'm visiting customer Baker Electronic anything i should know
+CustomerUpdateIntent what's the latest about Baker Electronics
+
+ThanksIntent See you in the office

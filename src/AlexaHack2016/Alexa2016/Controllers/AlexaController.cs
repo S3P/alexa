@@ -62,6 +62,10 @@ namespace Alexa2016.Controllers
 					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "ShowCashflowIntent":
 					return GetSSMLResponseObject(GetResponseString(stuff), false);
+				case "ShowSalesTrendIntent":
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
+				case "SetReminderIntent":
+					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "Math":
 					return GetMathResponse(request);
 				default:
@@ -110,6 +114,14 @@ namespace Alexa2016.Controllers
 					return text;
 				case "ShowCashflowIntent":
 					builder = new SSMLBuilder("OK, Done.");
+					text = builder.AddParagraph().ToString();
+					return text;
+				case "ShowSalesTrendIntent":
+					builder = new SSMLBuilder("OK, Done.");
+					text = builder.AddParagraph().ToString();
+					return text;
+				case "SetReminderIntent":
+					builder = new SSMLBuilder("OK, reminder set to tell Baker Electronics about audio cables.");
 					text = builder.AddParagraph().ToString();
 					return text;
 				default:
