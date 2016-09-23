@@ -28,7 +28,7 @@ namespace Alexa2016.Controllers
 			catch (Exception ex)
 			{
 				string msg = ex.Message;
-				return GetResponseObject("Something bad happened please call Masoud.");
+				return GetResponseObject("Something bad happened please call Mas'oud.");
 			}
 
 		}
@@ -37,6 +37,23 @@ namespace Alexa2016.Controllers
 		{
 			LaunchRequest requestObj = Newtonsoft.Json.JsonConvert.DeserializeObject<LaunchRequest>(request.ToString());
 			return GetSSMLResponseObject("Hi, Thanks for choosing Exact Online Assistant! How may I help you?", false);
+		}
+
+		private AmountPOCOs GetAmounts()
+		{
+			CallEOL call = new SpeachAssets.CallEOL();
+			string value =call.test(callTypes.GetAmounts);
+			AmountPOCOs values = Newtonsoft.Json.JsonConvert.DeserializeObject<AmountPOCOs>(value);
+			return values;
+		}
+
+		private string GetNotes()
+		{
+			CallEOL call = new SpeachAssets.CallEOL();
+			string value = call.test(callTypes.BakerRemark);
+			NotesPoco values = Newtonsoft.Json.JsonConvert.DeserializeObject<NotesPoco>(value);
+
+			return values.d.results[0].Remarks;
 		}
 
 		private dynamic GetIntentResponse(dynamic request)
@@ -65,12 +82,19 @@ namespace Alexa2016.Controllers
 				case "ShowSalesTrendIntent":
 					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "SetReminderIntent":
+					postToEOL();
 					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "Math":
 					return GetMathResponse(request);
 				default:
 					return GetResponseObject("Should I answer that?", false);
 			}
+		}
+
+		private void postToEOL()
+		{
+			PostEOL peol = new SpeachAssets.PostEOL();
+			peol.test("Remind to send a quotation to Baker");
 		}
 
 		private string GetResponseString(string intentString)
@@ -109,7 +133,8 @@ namespace Alexa2016.Controllers
 					text = builder.AddParagraph().ToString();
 					return text;
 				case "CustomerUpdateIntent":
-					builder = new SSMLBuilder("They've moved office, their new address is Marketplace 10 in Amsterdam. Recently, they returned several items, because they were damaged. Mrs Baker expressed her concern about this and wants to discuss this. They owe you 30,000 Euro, of which 1500 Euro is late");
+					var amounts = GetAmounts();
+					builder = new SSMLBuilder(string.Format(GetNotes()+ "They owe you {0} Euros, of which {1} Euros is late", amounts.d.results[0].TotalAmount, amounts.d.results[0].AgeGroup2Amount));
 					text = builder.AddParagraph().ToString();
 					return text;
 				case "ShowCashflowIntent":
