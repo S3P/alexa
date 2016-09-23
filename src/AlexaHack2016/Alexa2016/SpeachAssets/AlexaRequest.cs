@@ -12,5 +12,4 @@ namespace Alexa2016.SpeachAssets
 		public Context context { get; set; }
 		public Request request { get; set; }
 	}
-
 }

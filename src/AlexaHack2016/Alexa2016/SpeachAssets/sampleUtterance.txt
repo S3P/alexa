@@ -17,6 +17,8 @@ Alexa Good morning,
 
 Launch exact!
 
+ThanksIntent OK Thanks.
+
 WhathappenedIntent What happended in my webshop last night?
 
 OptionIntent what are my options
