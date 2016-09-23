@@ -21,12 +21,10 @@ QuickerDeliveryIntent can we deliver faster
 QuickerDeliveryIntent when is the earliest i can restock
 QuickerDeliveryIntent when can i restock
 
-DeliveryIntent Let's get them delivered by tomorrow
-DeliveryIntent Deliver them tomorrow
-DeliveryIntent Send them tomorrow
+PurchaseIntent Please place the rush order at BCC for today
+PurchaseIntent Please place the order at BCC 
+PurchaseIntent Please place the order at BCC for today
 
 ThanksIntent OK Thanks.
 ThanksIntent Thanks.
 ThanksIntent Thank you.
-
-
