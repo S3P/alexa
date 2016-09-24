@@ -253,9 +253,13 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="SpeachAssets\AlexaRequest.cs" />
+    <Compile Include="SpeachAssets\AmountPOCOs.cs" />
+    <Compile Include="SpeachAssets\CallEOL.cs" />
     <Compile Include="SpeachAssets\LaunchIntent.cs" />
     <Compile Include="SpeachAssets\Math.cs" />
+    <Compile Include="SpeachAssets\NotesPoco.cs" />
     <Compile Include="SpeachAssets\POCOs.cs" />
+    <Compile Include="SpeachAssets\PostEOL.cs" />
     <Compile Include="SpeachAssets\ServicebusHandler.cs" />
     <Compile Include="SpeachAssets\SSMLBuilder.cs" />
     <Compile Include="Startup.cs" />

@@ -24,7 +24,7 @@ PurchaseIntent Please place the order at BCC for today
 ShowCashflowIntent Show my cashflow balance on screen
 
 ShowSalesTrendIntent Show the sales trend for iPhones this year
-
+	
 SetReminderIntent Remind me to send more information about audio cables to Baker Electronics
 
 CustomerUpdateIntent I'm visiting customer Baker Electronic anything i should know
