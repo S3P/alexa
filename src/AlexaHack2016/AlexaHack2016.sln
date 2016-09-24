@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alexa2016Tests", "Alexa2016
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeExact", "FakeExact\FakeExact\FakeExact.csproj", "{F82C3C2D-FE78-4DB2-BC2F-8B27F3365180}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeEOLAlexa", "FakeEOLAlexa\FakeEOLAlexa.csproj", "{6E40D186-4B9C-4405-914A-E3D35131D17E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F82C3C2D-FE78-4DB2-BC2F-8B27F3365180}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F82C3C2D-FE78-4DB2-BC2F-8B27F3365180}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F82C3C2D-FE78-4DB2-BC2F-8B27F3365180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E40D186-4B9C-4405-914A-E3D35131D17E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E40D186-4B9C-4405-914A-E3D35131D17E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E40D186-4B9C-4405-914A-E3D35131D17E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E40D186-4B9C-4405-914A-E3D35131D17E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

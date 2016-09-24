@@ -1,0 +1,17 @@
+﻿@using FakeEOLAlexa.Models;
+@model NewModel
+
+@{
+	switch (Model.image)
+	{
+		case "1":
+			<img src="~/images/findashboard.png" />
+			break;
+		case "2":
+			<img src="~/images/Scenario3_firststepV2.png" />
+			break;
+		case "3":
+			<img src="~/images/Scenario3_step2_v2.png" />
+			break;
+	}
+}

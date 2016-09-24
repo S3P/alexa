@@ -77,8 +77,10 @@ namespace Alexa2016.Controllers
 				case "CustomerUpdateIntent":
 					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "ShowCashflowIntent":
+					CallFakeEol.call("2");
 					return GetSSMLResponseObject(GetResponseString(stuff), true);
 				case "ShowSalesTrendIntent":
+					CallFakeEol.call("3");
 					return GetSSMLResponseObject(GetResponseString(stuff), true);
 				case "SetReminderIntent":
 					postToEOL();
