@@ -30,7 +30,6 @@ namespace Alexa2016.Controllers
 				string msg = ex.Message;
 				return GetResponseObject("Something bad happened please call Masoud.");
 			}
-
 		}
 
 		private dynamic GetLaunchResponse(dynamic request)
@@ -61,11 +60,11 @@ namespace Alexa2016.Controllers
 				case "CustomerUpdateIntent":
 					return GetSSMLResponseObject(GetResponseString(stuff), false);
 				case "ShowCashflowIntent":
-					return GetSSMLResponseObject(GetResponseString(stuff), false);
+					return GetSSMLResponseObject(GetResponseString(stuff), true);
 				case "ShowSalesTrendIntent":
-					return GetSSMLResponseObject(GetResponseString(stuff), false);
+					return GetSSMLResponseObject(GetResponseString(stuff), true);
 				case "SetReminderIntent":
-					return GetSSMLResponseObject(GetResponseString(stuff), false);
+					return GetSSMLResponseObject(GetResponseString(stuff), true);
 				case "Math":
 					return GetMathResponse(request);
 				default:

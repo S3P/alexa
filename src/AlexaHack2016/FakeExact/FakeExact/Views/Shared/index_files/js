@@ -1,0 +1,63 @@
+/// <reference path="SysControls/SysIE.js" />
+/// <reference path="SysControls/SysLegacy.js" />
+/// <reference path="SysControls/Dialog.js" />
+/// <reference path="SysControls/SysUrlBuilder.js" />
+
+function ShowActivityModalPage(url, titleTerm, titleTermId) {
+    //// It makes activity dialog visible in full screen mode. Also it can be resizable
+    if (Dialog.ShowDialog()) {
+        var dlg = new Dialog({
+            contentsPage: new SysUrlBuilder(url),
+            fullScreen: true,
+            titleTerm: titleTerm,
+            titleTermId: titleTermId,
+            resizable: true,
+            onClose: function () { OnActivityDialogClose(); }
+        });
+        dlg.Open();
+    } else {
+        SysShowModal(url, "resizable:yes", '800px', '770px', 'OnActivityDialogClose()', true);
+    }
+}
+
+function ShowActivityFlexibleSizeModalPage(url, width, height) {
+	//// it allows to pass width and height and have dynamic page size, Also it can be resizable
+	if (Dialog.ShowDialog()) {
+		new Dialog({
+			autoShow: true,
+			width: parseInt(width),
+			height: parseInt(height),
+			resizable: true,
+			contentsPage: new SysUrlBuilder(url),
+			onClose: function () { OnActivityDialogClose(); }
+		}).Open();
+	} else {
+		SysShowModal(url, "resizable:yes", width, height, 'OnActivityDialogClose()', true);
+	}
+}
+
+function ShowActivityFlexibleSizeTitleModalPage(url, width, height, term, termId) {
+	//// it allows to pass width and height and title and have dynamic page size, Also it can be resizable
+	//// Use in MenuPortal.aspx for WizAdministrationSetup.aspx
+	var dialogHandler = function () {
+		window.top.allowSwitch = true;
+		window.top.location.href = 'MenuPortal.aspx';
+	};
+
+	new Dialog({
+		autoShow: true,
+		width: parseInt(width),
+		height: parseInt(height),
+		titleTerm: term,
+		titleTermId: termId,
+		resizable: true,
+		contentsPage: new SysUrlBuilder(url),
+		onClose: function () { dialogHandler(); }
+	}).Open();
+}
+
+function OnActivityDialogClose() {
+	/// <summary> Performs a simple handling when dialog is closed programmatically or by user. </summary>
+	SysSubmit();
+}
+;
